@@ -20,7 +20,7 @@ import myutils
 random.seed(a=10)
 def get_parameters():
     parser = argparse.ArgumentParser(description='FLSTGCN')
-    parser.add_argument('--dataset', type=str, default='./data/metr-la',
+    parser.add_argument('--dataset', type=str, default='./data/pemsd7-m',
                         choices=['metr-la', 'pems-bay', 'pemsd7-m'])
     parser.add_argument('--n_his', type=int, default=12)
     parser.add_argument('--n_pred', type=int, default=3, choices=[3, 1],
@@ -195,7 +195,7 @@ class FederatedLearningService:
                 if clientMAE > threshold:
                     reward = - np.exp(-clientMAE) * 10000
                 else:
-                    reward = np.exp(-clientMAE) * 10
+                    reward = np.exp(-clientMAE) * 10000
                 done = 0
                 self.AC.store_transition(state, action.detach().cpu().numpy(), reward, state, done)
                 self.AC.train()

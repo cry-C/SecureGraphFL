@@ -192,6 +192,9 @@ def data_preparate(csv_file_path, n_his, n_pred, num, batch_size, device):
 
     return train, val, test, yuan_test_iter, zscore, zscore_client, err_train, err_val, err_test, err_test_iter, err_zscore, err_zscore_client, client_n_vertices
 def load_sparse_adjacency_matrix(csv_file, num):
+    save_dir = './temp'
+    os.makedirs(save_dir, exist_ok=True)
+
     filename = 'vel.csv'
     file_path = os.path.join(csv_file, filename)
     graph_vel = pd.read_csv(file_path, header=None)
@@ -209,23 +212,23 @@ def load_sparse_adjacency_matrix(csv_file, num):
         client_file.append(graph_vel.iloc[:, start_col:end_col].copy())
 
     if csv_file == './data/metr-la':
-        np.save('./LSTM/globel_graph_metr.npy', globel_G)
-        globel_G = np.load('./LSTM/globel_graph_metr.npy')
+        np.save('./temp/globel_graph_metr.npy', globel_G)
+        globel_G = np.load('./temp/globel_graph_metr.npy')
         client_graph = []
         for i in range(num):
             temp = Greph(client_file[i])
             client_graph.append(temp)
-            filename = f'./LSTM/metr_la_client{i}.npz'
+            filename = f'./temp/metr_la_client{i}.npz'
             np.save(filename, temp)
         n_vertex = 207
     elif csv_file == './data/pemsd7-m':
-        np.save('./LSTM/globel_graph_pemsd7-m.npy', globel_G)
-        globel_G = np.load('./LSTM/globel_graph_pemsd7-m.npy')
+        np.save('./temp/globel_graph_pemsd7-m.npy', globel_G)
+        globel_G = np.load('./temp/globel_graph_pemsd7-m.npy')
         client_graph = []
         for i in range(num):
             temp = Greph(client_file[i])
             client_graph.append(temp)
-            filename = f'./LSTM/pems_client{i}.npz'
+            filename = f'./temp/pems_client{i}.npz'
             np.save(filename, temp)
         n_vertex = 228
 
