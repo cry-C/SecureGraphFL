@@ -2,7 +2,7 @@
 
 ## About
 
-This is the PyTorch implementation of Secure Graph FL from the paper "SecureGraphFL: A Privacy-Preserving and Attack-Resilient Federated Learning Framework for Traffic Prediction". It is designed to model spatio-temporal dependencies in traffic flow data for accurate traffic forecasting.
+This is the PyTorch implementation of Secure Graph FL from the paper "SecureGraphFL: A Privacy-Preserving and Attack-Resilient Federated Learning Framework for Traffic Prediction". The proposed model is designed to address privacy protection and model robustness issues in traffic prediction. The framework integrates graph convolutional networks (GCNs) and Actor-Critic networks, enabling it to maintain high predictive accuracy while safeguarding user data privacy.
 
 ## Prerequisites- Use Same Versions
 
