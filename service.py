@@ -195,7 +195,7 @@ class FederatedLearningService:
                 if clientMAE > threshold:
                     reward = - np.exp(-clientMAE) * 10000
                 else:
-                    reward = np.exp(-clientMAE) * 10000
+                    reward = np.exp(-clientMAE) * 10
                 done = 0
                 self.AC.store_transition(state, action.detach().cpu().numpy(), reward, state, done)
                 self.AC.train()
