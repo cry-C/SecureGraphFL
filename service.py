@@ -363,6 +363,9 @@ if __name__ == "__main__":
     with open(res_file_path, 'w') as time_file:
         time_file.write('')
 
+    save_dir = './pictures/Service'
+    os.makedirs(save_dir, exist_ok=True)
+
     fl_service = FederatedLearningService(args)
     service_start_time = time.time()
 
