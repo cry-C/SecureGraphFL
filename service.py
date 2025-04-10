@@ -104,7 +104,7 @@ class FederatedLearningService:
 
             for result in client_res:
                 model_weights, model_yuan_weights, model_err_weights, c_time = result.get()
-                if countall < 2:
+                if countall < 3:
                     model_weights = STGCN(self.client_n_vertices[countall]).state_dict()
                     model_yuan_weights = GCN(self.args.n_his).state_dict()
                     model_err_weights = GCN(self.args.n_his - 1).state_dict()
